@@ -1,0 +1,57 @@
+
+{
+  "resources": {
+    "head": [
+      {
+        "type": "script",
+        "src": "./source/guides.js"
+      },
+      {
+        "type": "script",
+        "src": "./source/app.js"
+      }
+    ]
+  },
+  "hooks": [
+    {
+      "endpoint": "https://api.userdeck.com/integrations/cloudlare",
+      "events": ["option-change:account", "preview", "item-add", "new-install", "update-install"],
+      "block": true,
+      "authenticate": ["account"],
+      "failure": {
+        "action": "notify",
+        "message": "There was an error communicating with UserDeck."
+      }
+    }
+  ],
+  "options": {
+    "properties": {
+      "account": {
+        "title": "UserDeck Account",
+        "description": "Connect your existing UserDeck account or create one for free to get started.",
+        "type": "object",
+        "format": "account",
+        "services": ["userdeck"],
+        "order": 0,
+        "required": false
+      },
+      "location": {
+        "title": "Location",
+        "description": "Select where on the page would you like this embed to appear.",
+        "type": "object",
+        "format": "element",
+        "default": {
+          "selector": "body",
+          "method": "prepend"
+        },
+        "order": 1
+      },
+      "key": {
+        "title": "Guide Key",
+        "placeholder": "",
+        "type": "string",
+        "order": 2
+      }
+    }
+  }
+}
