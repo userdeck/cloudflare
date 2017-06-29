@@ -4,10 +4,6 @@
     "head": [
       {
         "type": "script",
-        "src": "./source/guides.js"
-      },
-      {
-        "type": "script",
         "src": "./source/app.js"
       }
     ]
